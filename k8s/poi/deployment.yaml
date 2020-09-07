@@ -27,9 +27,14 @@ spec:
           - name: SQL_USER
             value: sqladminoOb9604
           - name: SQL_USER
-            value: {your_password}
+            value: your_password
           - name: SQL_SERVER
             value: sqlserveroob9604.database.windows.net
+        envFrom:
+        - configMapRef:
+            name: config_map
+        - secretRef:
+            name: secret_name
         ports:
         - containerPort: 80
           name: poi
