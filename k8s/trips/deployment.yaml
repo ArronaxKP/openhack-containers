@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: tripview
-        image: registryoob9604.azurecr.io/tripinsights/tripview:1.0
+        image: registryoob9604.azurecr.io/tripinsights/trips:1.0
         resources:
           requests:
             cpu: 100m

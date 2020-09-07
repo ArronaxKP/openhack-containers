@@ -18,3 +18,6 @@ or override existing with:
 ## Create namespace:
 
 `kubectl create namespace tripviewer`
+
+### Deploy file:
+`kubectl apply -f deployment.yaml`
