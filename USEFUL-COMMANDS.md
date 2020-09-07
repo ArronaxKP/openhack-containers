@@ -61,6 +61,7 @@ https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get
 
 registryoob9604.azurecr.io
 
+# poi docker build and tag
 Go to poi directory and execute:
 
 `docker build -t registryoob9604.azurecr.io/tripinsights/poi:1.0 .`
@@ -68,3 +69,27 @@ Go to poi directory and execute:
 and push it to our registry:
 
 `docker push registryoob9604.azurecr.io/tripinsights/poi:1.0`
+
+# trips docker build and tag
+```
+docker build -t registryoob9604.azurecr.io/tripinsights/trips:1.0 .
+docker push registryoob9604.azurecr.io/tripinsights/trips:1.0
+```
+
+# tripviewer docker build and tag
+```
+docker build -t registryoob9604.azurecr.io/tripinsights/tripviewer:1.0 .
+docker push registryoob9604.azurecr.io/tripinsights/tripviewer:1.0
+```
+
+# user-java docker build and tag
+```
+docker build -t registryoob9604.azurecr.io/tripinsights/user-java:1.0 .
+docker push registryoob9604.azurecr.io/tripinsights/user-java:1.0
+```
+
+# userprofile docker build and tag
+```
+docker build -t registryoob9604.azurecr.io/tripinsights/userprofile:1.0 .
+docker push registryoob9604.azurecr.io/tripinsights/userprofile:1.0
+```
