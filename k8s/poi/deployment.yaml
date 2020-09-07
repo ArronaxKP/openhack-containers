@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi
+  namespace: tripviewer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poi
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+      - name: poi
+        image: registryoob9604.azurecr.io/tripinsights/poi:1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          name: poi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poi
+  namespace: tripviewer
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: poi

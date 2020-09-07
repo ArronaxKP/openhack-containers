@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userprofile
+  namespace: tripviewer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userprofile
+  template:
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      containers:
+      - name: userprofile
+        image: registryoob9604.azurecr.io/tripinsights/userprofile:1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          name: userprofile
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: userprofile
+  namespace: tripviewer
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: userprofile
