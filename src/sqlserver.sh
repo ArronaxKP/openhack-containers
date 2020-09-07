@@ -1,3 +1,3 @@
-docker create network openhack
+docker network create openhack
 
-docker run --network openhack -e SQLFQDN=<servername> -e SQLUSER=<db-user> -e SQLPASS=<password> -e SQLDB=mydrivingDB openhack/data-load:v1
+docker run --network openhack -e SQLFQDN=localhost -e SQLUSER=openhack -e SQLPASS=openhack -e SQLDB=mydrivingDB openhack/data-load:v1
