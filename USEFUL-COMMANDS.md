@@ -6,9 +6,9 @@ Clean all cached local content - `docker system prune -a`
 
 ## Build poi
 
-`cd src/poi`
+Move to POI folder: `cd src/poi`
 
-`docker build . -t poi:1.0`
+Build Poi application and tag with 1.0: `docker build . -t poi:1.0`
 
 ## Start poi
 
