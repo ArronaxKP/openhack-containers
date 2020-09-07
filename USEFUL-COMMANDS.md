@@ -52,3 +52,19 @@ Test if it's all working:
 More:
 
 https://github.com/Azure-Samples/openhack-containers/tree/master/src/poi#testing
+
+
+# Azure docker repo
+
+## Docs
+https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli
+
+registryoob9604.azurecr.io
+
+Go to poi directory and execute:
+
+`docker tag registryoob9604.azurecr.io/poi:1.0 .`
+
+and push it to our registry:
+
+`docker push registryoob9604.azurecr.io/poi:1.0`
