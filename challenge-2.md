@@ -14,10 +14,23 @@ or override existing with:
 
 `az aks get-credentials --resource-group rg-aks --name aks-test --overwrite-existing -a`
 
-
 ## Create namespace:
 
 `kubectl create namespace tripviewer`
 
-### Deploy file:
-`kubectl apply -f deployment.yaml`
+## Attach ACR to authenticate for AKS
+
+`az aks update -n aks-test -g rg-aks --attach-acr registryoob9604`
+
+## Apply Deployment
+
+Move to app deployment: `cd k8s/poi/`
+
+Apply deployment file: `kubectl apply -f deployment.yaml`
+
+Replace deployment file: `kubectl replace -f deployment.yaml`
+
+Descript pod to get pod messages: `kubectl describte pod <uniquie_pod_id> -n <namespace>`
+
+Get logs from the pod: `kubectl logs <uniquie_pod_id> -n <namespace>`
+
