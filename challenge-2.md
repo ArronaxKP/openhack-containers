@@ -28,9 +28,13 @@ Move to app deployment: `cd k8s/poi/`
 
 Apply deployment file: `kubectl apply -f deployment.yaml`
 
+Delete deployment file: `kubectl replace -f deployment.yaml`
+
 Replace deployment file: `kubectl replace -f deployment.yaml`
 
-Descript pod to get pod messages: `kubectl describte pod <uniquie_pod_id> -n <namespace>`
+Get pods to get Pod Unique ID: `kubectl get pods -n tripviewer`
 
-Get logs from the pod: `kubectl logs <uniquie_pod_id> -n <namespace>`
+Descript pod to get pod messages: `kubectl describe pod <uniquie_pod_id> -n tripviewer`
+
+Get logs from the pod: `kubectl logs <uniquie_pod_id> -n tripviewer`
 
