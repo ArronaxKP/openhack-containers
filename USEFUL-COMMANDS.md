@@ -61,10 +61,15 @@ https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get
 
 `registryoob9604.azurecr.io`
 
-Login to az docker repo:
+Login to az cli:
 
 ```
 az acr login --name registryoob9604.azurecr.io
+```
+
+Then login to docker repo (find credentials in Azure repo settings):
+```
+docker login registryoob9604.azurecr.io
 ```
 
 # poi docker build and tag
