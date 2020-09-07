@@ -63,8 +63,8 @@ registryoob9604.azurecr.io
 
 Go to poi directory and execute:
 
-`docker build -t registryoob9604.azurecr.io/poi:1.0 .`
+`docker build -t registryoob9604.azurecr.io/tripinsights/poi:1.0 .`
 
 and push it to our registry:
 
-`docker push registryoob9604.azurecr.io/poi:1.0`
+`docker push registryoob9604.azurecr.io/tripinsights/poi:1.0`
