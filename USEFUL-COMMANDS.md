@@ -59,7 +59,13 @@ https://github.com/Azure-Samples/openhack-containers/tree/master/src/poi#testing
 ## Docs
 https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli
 
-registryoob9604.azurecr.io
+`registryoob9604.azurecr.io`
+
+Login to az docker repo:
+
+```
+az acr login --name registryoob9604.azurecr.io
+```
 
 # poi docker build and tag
 Go to poi directory and execute:
