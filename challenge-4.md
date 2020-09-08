@@ -29,3 +29,56 @@ We then need to add the user to our subscription: https://docs.microsoft.com/en-
 
 Add user to role: `Go to Subscription -> IAM -> Role Assignments -> Add -> Add Role Assignment -> Type User name in select field -> pick user`
 
+
+
+## Create Service principal
+
+`SPNAME="sp-aks-rbac"`
+# OPTIONAL: Create a new service principal, be sure to notate the SP secret returned on creation.
+`az ad sp create-for-rbac --skip-assignment --name $SPNAME`
+
+Output:
+
+```
+{
+  "appId": "f8c46b1c-533e-4ac1-8471-54e6bff6cbf2",
+  "displayName": "sp-aks-rbac",
+  "name": "http://sp-aks-rbac",
+  "password": "w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw",
+  "tenant": "6b29644a-06d8-48d2-80d8-360b0c87893c"
+}
+```
+
+If you lose your AZURE_CLIENT_SECRET (SP Secret), you can reset and receive it with this command:
+`az ad sp credential reset --name $SPNAME --credential-description "APClientSecret" --query password -o tsv`
+
+Set environment variables
+
+```
+AZURE_CLIENT_ID=$(az ad sp show --id http://${SPNAME} --query appId -o tsv)
+KEYVAULT_NAME=admiral-team2-kv
+KEYVAULT_RESOURCE_GROUP=rg-aks-rbac
+SUBID=654efdd1-153d-49d5-8685-0f00758cc197
+```
+
+Assign Reader Role to the service principal for your keyvault: `az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME`
+
+```
+{
+  "canDelegate": null,
+  "id": "/subscriptions/654efdd1-153d-49d5-8685-0f00758cc197/resourcegroups/rg-aks-rbac/providers/Microsoft.KeyVault/vaults/admiral-team2-kv/providers/Microsoft.Authorization/roleAssignments/e7852701-87f1-47aa-993f-1198929e536f",
+  "name": "e7852701-87f1-47aa-993f-1198929e536f",
+  "principalId": "4e58a786-7561-4ca1-9119-30dc16809e1c",
+  "principalType": "ServicePrincipal",
+  "resourceGroup": "rg-aks-rbac",
+  "roleDefinitionId": "/subscriptions/654efdd1-153d-49d5-8685-0f00758cc197/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+  "scope": "/subscriptions/654efdd1-153d-49d5-8685-0f00758cc197/resourcegroups/rg-aks-rbac/providers/Microsoft.KeyVault/vaults/admiral-team2-kv",
+  "type": "Microsoft.Authorization/roleAssignments"
+}
+```
+
+az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
+az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
+az keyvault set-policy -n $KEYVAULT_NAME --certificate-permissions get --spn $AZURE_CLIENT_ID
+
+Create K8S secret with SP details to auth for Key Vault: `kubectl create secret generic secrets-store-creds --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw`
