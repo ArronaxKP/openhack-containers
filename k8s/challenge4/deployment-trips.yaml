@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-java
-  namespace: tripviewer
+  name: trips
+  namespace: tripapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-java
+      app: trips
   template:
     metadata:
       labels:
-        app: user-java
+        app: trips
     spec:
       containers:
-      - name: user-java
-        image: registryoob9604.azurecr.io/tripinsights/user-java:1.0
+      - name: trips
+        image: registryoob9604.azurecr.io/tripinsights/trips:1.0
         resources:
           requests:
             cpu: 100m
@@ -25,18 +25,18 @@ spec:
             memory: 256Mi
         envFrom:
         - configMapRef:
-            name: tripviewer-config-map
+            name: tripapi-config-map
         ports:
         - containerPort: 80
-          name: user-java
+          name: trips
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-java
-  namespace: tripviewer
+  name: trips
+  namespace: tripapi
 spec:
   ports:
   - port: 80
   selector:
-    app: user-java
+    app: trips
