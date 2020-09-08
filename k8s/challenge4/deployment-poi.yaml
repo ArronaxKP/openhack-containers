@@ -23,12 +23,32 @@ spec:
           limits:
             cpu: 250m
             memory: 256Mi
-        envFrom:
-        - configMapRef:
-            name: tripapi-config-map
+        env:
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: "sql-user2"
+              key: sql-user2
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "sql-password2"
+              key: sql-password2
+        - name: SQL-SERVER
+          valueFrom:
+            secretKeyRef:
+              name: "sql-server2"
+              key: sql-server2
         ports:
         - containerPort: 80
           name: poi
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-admiral-team2-kv"
 ---
 apiVersion: v1
 kind: Service

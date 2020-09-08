@@ -4,8 +4,5 @@ metadata:
   name: tripapi-config-map
   namespace: tripviewer
 data:
-  SQL_USER: "sqladminoOb9604"
-  SQL_PASSWORD: "kK5mx8Du0"
-  SQL_SERVER: "sqlserveroob9604.database.windows.net"
   TRIPS_API_ENDPOINT: "http://trips"
   USERPROFILE_API_ENDPOINT: "http://userprofile"
