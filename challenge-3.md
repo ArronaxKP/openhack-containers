@@ -24,17 +24,35 @@ Check what version of k8s you can use (can also check via portal): `az aks get-v
 
 Add `--enable-aad --enable-azure-rbac` to add new RBAC capabilities
 
-az network vnet subnet list --resource-group teamresource --vnet-name vnet --query "[0].id" --output tsv
+Command to get VNET ID: `az network vnet subnet list --resource-group teamResources --vnet-name vnet --query "[0].id" --output tsv`
+
+Set VNET_ID variable to use in Create command: `VNET_ID="$(az network vnet subnet list --resource-group teamResources --vnet-name vnet --query '[0].id' --output tsv)"`
+
+Flags add to add aks to existing vnet
 
 ```
 --network-plugin azure \
---vnet-subnet-id <subnet-id> \
+--vnet-subnet-id "${VNET_ID}" \
 --docker-bridge-address 172.17.0.1/16 \
 --dns-service-ip 10.2.0.10 \
 --service-cidr 10.2.0.0/24 \
 ```
 
-Create cluster: `az aks --resource-group rg-aks --name aks-test --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --enable-azure-rbac`
+Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --enable-azure-rbac --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Get kubeclt config (kubeconfig): `az aks get-credentials --resource-group rg-aks --name aks-test --overwrite-existing `
 

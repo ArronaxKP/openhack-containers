@@ -12,7 +12,7 @@ Login to az cli: `az login`
 
 ### Create cluster:
 
-`az aks --resource-group rg-aks --name aks-test --kubernetes-version 1.17.9 --node-count 3 --enable-addons monitoring --generate-ssh-keys`
+`az aks create --resource-group rg-aks --name aks-test --kubernetes-version 1.17.9 --node-count 3 --enable-addons monitoring --generate-ssh-keys`
 
 ### Get kubeclt config (kubeconfig):
 
