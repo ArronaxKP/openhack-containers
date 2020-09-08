@@ -67,7 +67,7 @@ This commands jumps onto a pod but will run the default entrypoint (which may no
 `kubectl exec -it pod-name -n tripviewer`
 
 This commands jumps onto a pod but will /bin/sh to get a new terminal:
-`kubectl exec --stdin --tty pod-name -n tripviewer -- /bin/bash`
+`kubectl exec --stdin --tty pod-name -n tripviewer -- /bin/sh`
 
 How do I get out? If you get stuck in a container, the correct way to exit is to type `exit`
 If you cannot get back to a terminal to type a command then press `cntl P + Q` to exit

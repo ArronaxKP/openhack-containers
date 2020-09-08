@@ -42,6 +42,9 @@ Remove RBAC Command as feature flag not enabled: `--enable-azure-rbac`
 
 Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --aad-admin-group-object-ids fdf5c95d-a738-4234-87d2-df1dc92ac63b --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.200.0.10 --service-cidr 10.200.0.0/24`
 
+Get ID of the group created manually in Azure portal:
+`AKS_ID=$(az aks show -g rg-aks-rbac -n aks-rbac --query id -o tsv)`
+`az role assignment create --role "Azure Kubernetes Service RBAC Admin" --assignee fdf5c95d-a738-4234-87d2-df1dc92ac63b --scope $AKS_ID`
 
 Get kubeclt config (kubeconfig): `az aks get-credentials --resource-group rg-aks --name aks-test --overwrite-existing `
 
@@ -49,5 +52,19 @@ Create namespace: `kubectl create namespace tripviewer`
 
 Attach ACR to authenticate for AKS: `az aks update -n aks-test -g rg-aks --attach-acr registryoob9604`
 
+`az aks update -n aks-rbac -g rg-aks-rbac --attach-acr registryoob9604`
 
 Get credentials: `az aks get-credentials --resource-group rg-aks-rbac --name aks-rbac`
+
+Quickly create disposable pod `kubectl run -it busybox --image=busybox -- sh` to ping `internal-vm`:
+
+```
+❯ kubectl run -it busybox --image=busybox -- sh
+
+If you don't see a command prompt, try pressing enter.
+/ # ping 10.2.0.4
+PING 10.2.0.4 (10.2.0.4): 56 data bytes
+64 bytes from 10.2.0.4: seq=0 ttl=64 time=1.878 ms
+64 bytes from 10.2.0.4: seq=1 ttl=64 time=0.899 ms
+64 bytes from 10.2.0.4: seq=2 ttl=64 time=1.145 ms
+```
