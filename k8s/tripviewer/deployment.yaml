@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: trips
+  name: tripviewer
   namespace: tripviewer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: trips
+      app: tripviewer
   template:
     metadata:
       labels:
-        app: trips
+        app: tripviewer
     spec:
       containers:
-      - name: trips
+      - name: tripviewer
         image: registryoob9604.azurecr.io/tripinsights/tripviewer:1.0
         resources:
           requests:
@@ -28,15 +28,15 @@ spec:
             name: tripviewer-config-map
         ports:
         - containerPort: 80
-          name: trips
+          name: tripviewer
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: trips
+  name: tripviewer
   namespace: tripviewer
 spec:
   ports:
   - port: 80
   selector:
-    app: trips
+    app: tripviewer
