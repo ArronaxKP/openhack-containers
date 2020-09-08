@@ -62,6 +62,12 @@ https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get
 Login to az cli:
 
 ```
+az login
+```
+
+Log in to the Azure Containter Registry:
+
+```
 az acr login --name registryoob9604.azurecr.io
 ```
 

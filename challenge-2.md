@@ -2,6 +2,10 @@
 
 ## Installation
 
+## Login to Azure CLI
+
+Login to az cli: `az login`
+
 ### Create resource group:
 
 `az group create --name rg-aks --location northeurope`
@@ -10,7 +14,7 @@
 
 `az aks --resource-group rg-aks --name aks-test --kubernetes-version 1.17.9 --node-count 3 --enable-addons monitoring --generate-ssh-keys`
 
-### Get kubeclt config:
+### Get kubeclt config (kubeconfig):
 
 `az aks get-credentials --resource-group rg-aks --name aks-test `
 
