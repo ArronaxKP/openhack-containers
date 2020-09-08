@@ -38,8 +38,9 @@ Flags add to add aks to existing vnet
 --service-cidr 10.2.0.0/24 \
 ```
 
-Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --enable-azure-rbac --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24`
+Remove RBAC Command as feature flag not enabled: `--enable-azure-rbac`
 
+Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.200.0.10 --service-cidr 10.200.0.0/24`
 
 
 
