@@ -53,3 +53,7 @@ Get logs from the pod: `kubectl logs <uniquie_pod_id> -n tripviewer`
 We add environment variables to the pod for the DB credentials: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
 
 We create a config map to store environment variables: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
+
+`kubectl apply -f shared/configmap.yaml`
+
+Get IP addresses from all services to populate `configmap.yaml` with correct endpoints: `kubectl get svc -n tripviewer`
