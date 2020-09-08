@@ -40,19 +40,7 @@ Flags add to add aks to existing vnet
 
 Remove RBAC Command as feature flag not enabled: `--enable-azure-rbac`
 
-Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.200.0.10 --service-cidr 10.200.0.0/24`
-
-
-
-
-
-
-
-
-
-
-
-
+Create cluster: `az aks create --resource-group rg-aks-rbac --name aks-rbac --kubernetes-version 1.18.6 --node-count 3 --enable-addons monitoring --generate-ssh-keys --enable-aad --aad-admin-group-object-ids fdf5c95d-a738-4234-87d2-df1dc92ac63b --network-plugin azure --vnet-subnet-id "${VNET_ID}" --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.200.0.10 --service-cidr 10.200.0.0/24`
 
 
 Get kubeclt config (kubeconfig): `az aks get-credentials --resource-group rg-aks --name aks-test --overwrite-existing `
@@ -60,3 +48,6 @@ Get kubeclt config (kubeconfig): `az aks get-credentials --resource-group rg-aks
 Create namespace: `kubectl create namespace tripviewer`
 
 Attach ACR to authenticate for AKS: `az aks update -n aks-test -g rg-aks --attach-acr registryoob9604`
+
+
+Get credentials: `az aks get-credentials --resource-group rg-aks-rbac --name aks-rbac`
