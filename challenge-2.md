@@ -48,3 +48,8 @@ Descript pod to get pod messages: `kubectl describe pod <uniquie_pod_id> -n trip
 
 Get logs from the pod: `kubectl logs <uniquie_pod_id> -n tripviewer`
 
+### Adding a config map
+
+We add environment variables to the pod for the DB credentials: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
+
+We create a config map to store environment variables: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
