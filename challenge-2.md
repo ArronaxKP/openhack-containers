@@ -42,11 +42,11 @@ Replace deployment file: `kubectl replace -f deployment.yaml`
 
 ### Check Pod Deployment
 
-Get pods to get Pod Unique ID: `kubectl get pods -n tripviewer`
+Get pods to get Pod Name: `kubectl get pods -n tripviewer`
 
-Descript pod to get pod messages: `kubectl describe pod <uniquie_pod_id> -n tripviewer`
+Descript pod to get pod messages: `kubectl describe pod pod-name -n tripviewer`
 
-Get logs from the pod: `kubectl logs <uniquie_pod_id> -n tripviewer`
+Get logs from the pod: `kubectl logs pod-name -n tripviewer`
 
 ### Adding a config map
 
@@ -57,3 +57,17 @@ We create a config map to store environment variables: https://kubernetes.io/doc
 `kubectl apply -f shared/configmap.yaml`
 
 Get IP addresses from all services to populate `configmap.yaml` with correct endpoints: `kubectl get svc -n tripviewer`
+
+### How to get onto a pod/container
+
+These commands allow you to get onto a pod:
+`-it` is the same as `--stdin --tty`. It is just the short commands
+
+This commands jumps onto a pod but will run the default entrypoint (which may not always give you a terminal):
+`kubectl exec -it pod-name -n tripviewer`
+
+This commands jumps onto a pod but will /bin/sh to get a new terminal:
+`kubectl exec --stdin --tty pod-name -n tripviewer -- /bin/bash`
+
+How do I get out? If you get stuck in a container, the correct way to exit is to type `exit`
+If you cannot get back to a terminal to type a command then press `cntl P + Q` to exit
