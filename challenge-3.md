@@ -20,6 +20,8 @@ Login to az cli: `az login`
 
 Create resource group: `az group create --name rg-aks-rbac --location northeurope`
 
+Get credentails for AKS cluster: az aks get-credentials -g rg-aks-rbac --name aks-rbac
+
 Check what version of k8s you can use (can also check via portal): `az aks get-versions --location eastus --output table`
 
 Add `--enable-aad --enable-azure-rbac` to add new RBAC capabilities
