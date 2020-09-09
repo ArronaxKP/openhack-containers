@@ -13,3 +13,9 @@ To check why a pod was last restarted. You can check the messages or events
 We do this by either creating the cluster with `--enable-addons monitoring` on the `az aks create` command which is what we did when we built all of our clusters
 
 [Guiide on how to enable monitoring](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-onboard)
+
+## Set up Azure Monitor Agent
+
+Using this guide page - https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-agent-config
+
+
