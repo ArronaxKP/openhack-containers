@@ -1,5 +1,7 @@
 # Challenge 3 - Setup an AKS with RBAC and VNET
 
+> How to check which cluster you are connected to: `kubectl config get-contexts`
+
 ## Create Two namespaces
 
 (already exists from challenge 3) Create namespace: `kubectl create namespace tripviewer`
@@ -135,3 +137,23 @@ kubectl apply -f deployment-tripviewer.yaml
 kubectl apply -f deployment-user-java.yaml
 kubectl apply -f deployment-userprofile.yaml
 ```
+
+## Creeate Nginx Controller
+
+Create a namespace for your ingress resources: `kubectl create namespace ingress-basic`
+
+Add the ingress-nginx repository: `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+
+Use Helm to deploy an NGINX ingress controller
+
+```bash
+helm install nginx-ingress ingress-nginx/ingress-nginx \
+    --namespace ingress-basic \
+    --set controller.replicaCount=2 \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+```
+
+If we make a mistake you can delete the namespace to start again by running: `kubectl delete namespace ingress-basic`
+
+If we change the name in the deployment yaml then we run `kubectl delete -f deployment.yaml` we will find it fails. That happens as it uses the name and namespace field to delete these obejcts. To then delete the object you must run `kubectl delete ingress <name> -n <namespace>`
