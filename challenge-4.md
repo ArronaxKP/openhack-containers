@@ -35,7 +35,9 @@ Via the Portal -> Create a Resource -> Search Key Vault -> Create
 
 Give it a neme -> next ... next ... next -> finish
 
-Fix permission. By default we should change it to use Azure Based Access Roles -> __Open key vault__ . Then go to the __Access Policies__ on the left hand side and tick the radial box `Azure role-based access control (preview)`
+Or we could have created it using the Azure CLI: `az keyvault create --name admiral-team2-kv --resource-group rg-aks-rbac`
+
+Fix permission (we did this after creating the service principal). By default we should change it to use Azure Based Access Roles -> __Open key vault__ . Then go to the __Access Policies__ on the left hand side and tick the radial box `Azure role-based access control (preview)`. We could have done this when we created it via the UI or if we
 
 Now we need to add the team as a Azure Key Vault Administrator. __Open key vault__ . Then go to the __Access Control (IAM)__ on the left hand side and and __+Add -> Role Assignment -> Select Key Vault Administratory Role (preview) -> And select team 2__
 
@@ -86,10 +88,28 @@ Assign Reader Role to the service principal for your keyvault: `az role assignme
 }
 ```
 
-az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
-az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
-az keyvault set-policy -n $KEYVAULT_NAME --certificate-permissions get --spn $AZURE_CLIENT_ID
+Add permissions to SP. if you are not using RBAC then use these permissions:
+
+Add Key permission (no needed for our use case): `az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID`
+
+Add Key permission: `az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID`
+
+Add Certificate permission (no needed for our use case): `az keyvault set-policy -n $KEYVAULT_NAME --certificate-permissions get --spn $AZURE_CLIENT_ID`
 
 Create K8S secret with SP details to auth for Key Vault _don't miss the name space_: `kubectl create secret generic secrets-store-creds --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw -n tripapi`
 
 Also create secret in Tripviewer: `kubectl create secret generic secrets-store-creds --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw -n tripviewer`
+
+We fixed the key vault to use RBAC so we needed to fix the permissions on the service principal which we did through the portal. Giving it `Azure Key Vault Secret Reader` role to the user service principal - sp-aks-rbac
+
+## Add Secrets on the volume
+
+We added the CSI Class (see YAML file)
+
+We tried setting ENV vars but got lost. So moved to using a volume mount instead (see YAML files)
+
+Once we had the YAML correct we used this command to check the files mounted on the volume to check that the secrets were set
+
+`kubectl exec -it -n tripapi poi-7c8548f7c-2kvfn -- ls /secrets`
+
+We cound out we couldn't use underscores so we had to set the objectAlias to set the name correctly.
