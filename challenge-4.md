@@ -100,7 +100,13 @@ Add Certificate permission (no needed for our use case): `az keyvault set-policy
 
 Create K8S secret with SP details to auth for Key Vault _don't miss the name space_: `kubectl create secret generic secrets-store-creds --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw -n tripapi`
 
-Also create secret in Tripviewer: `kubectl create secret generic secrets-store-creds --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw -n tripviewer`
+Also create secret in Tripviewer:
+```
+kubectl create secret generic secrets-store-creds \
+  --from-literal clientid=f8c46b1c-533e-4ac1-8471-54e6bff6cbf2 \
+  --from-literal clientsecret=w3U5UWgLrWfWHWtI0Vpu7XihsHe-Ozjihw \
+  -n tripviewer
+```
 
 We fixed the key vault to use RBAC so we needed to fix the permissions on the service principal which we did through the portal. Giving it `Azure Key Vault Secret Reader` role to the user service principal - sp-aks-rbac
 
@@ -138,7 +144,10 @@ kubectl apply -f deployment-user-java.yaml
 kubectl apply -f deployment-userprofile.yaml
 ```
 
-## Creeate Nginx Controller
+<<<<<<< HEAD
+## Create Nginx Ingress Controller
+
+[As per instructions](https://docs.microsoft.com/en-us/azure/aks/ingress-basic)
 
 Create a namespace for your ingress resources: `kubectl create namespace ingress-basic`
 
@@ -153,6 +162,10 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
+
+Check ingress deployment is working:
+`kubectl --namespace ingress-basic get services -o wide nginx-ingress-ingress-nginx-controller`
+
 
 If we make a mistake you can delete the namespace to start again by running: `kubectl delete namespace ingress-basic`
 
