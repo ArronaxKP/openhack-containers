@@ -1,4 +1,4 @@
-# Challenge 3 - Setup an AKS with RBAC and VNET
+# Challenge 4 - Key Vault and Nginx Controller
 
 > How to check which cluster you are connected to: `kubectl config get-contexts`
 
