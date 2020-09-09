@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: insurance-deployment
+  namespace: tripapi
   labels:
     deploy: insurance
 spec:
@@ -15,20 +16,20 @@ spec:
         app: insurance
     spec:
       containers:
-      - image: "replaceme.io/insurance:1.0"
+      - image: "registryoob9604.azurecr.io/insurance:1.0"
         imagePullPolicy: Always
         name: insurance
         ports:
         - containerPort: 8081
           name: http
           protocol: TCP
-
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
   name: insurance
+  namespace: tripapi
 spec:
   type: ClusterIP
   selector:
