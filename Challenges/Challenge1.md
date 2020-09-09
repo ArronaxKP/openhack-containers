@@ -12,6 +12,9 @@ Some of the work has been done for you, but it was during a time when teams were
 ## Building and Testing
 Since you're new to this code base, you're going to verify at least one of the services still works by building and testing locally. In order to do this, you will need to build and run the Points of Interest (POI) container as well as a SQL Server container. The POI container communicates with the SQL Server container over the Docker network:
 
+![Challenge 1 Architecture Diagram](images/challenge1-architecture.jfif "Challenge 1 - Architecture Diagram")
+
+
 To build the POI application, use the TripInsights source code and Dockerfile for each microservice, matching the Dockerfile to the source code.
 
 Tip: If you're having trouble matching the Dockerfile to the source code, remember the services are written in different languages. Take a look inside the Dockerfile, the corresponding service is more obvious than you think.
