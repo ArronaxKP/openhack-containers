@@ -113,3 +113,25 @@ Once we had the YAML correct we used this command to check the files mounted on 
 `kubectl exec -it -n tripapi poi-7c8548f7c-2kvfn -- ls /secrets`
 
 We cound out we couldn't use underscores so we had to set the objectAlias to set the name correctly.
+
+## Rebuild all deployments
+
+We deleted all deployments:
+
+```bash
+kubectl delete -f deployment-poi.yaml
+kubectl delete -f deployment-trips.yaml
+kubectl delete -f deployment-tripviewer.yaml
+kubectl delete -f deployment-user-java.yaml
+kubectl delete -f deployment-userprofile.yaml
+```
+
+Re-deploy all deployments:
+
+```bash
+kubectl apply -f deployment-poi.yaml
+kubectl apply -f deployment-trips.yaml
+kubectl apply -f deployment-tripviewer.yaml
+kubectl apply -f deployment-user-java.yaml
+kubectl apply -f deployment-userprofile.yaml
+```
