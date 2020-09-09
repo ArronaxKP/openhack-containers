@@ -23,22 +23,10 @@ spec:
           limits:
             cpu: 250m
             memory: 256Mi
-        env:
-        - name: SQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: "sql-user2"
-              key: sql-user2
-        - name: SQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: "sql-password2"
-              key: sql-password2
-        - name: SQL-SERVER
-          valueFrom:
-            secretKeyRef:
-              name: "sql-server2"
-              key: sql-server2
+        volumeMounts:
+        - name: secrets-store-creds
+          mountPath: "/secrets"
+          readOnly: true
         ports:
         - containerPort: 80
           name: poi

@@ -2,8 +2,9 @@ apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
 kind: SecretProviderClass
 metadata:
   name: azure-admiral-team2-kv
+  namespace: tripapi
 spec:
-  provider: azure                   
+  provider: azure
   parameters:
     keyvaultName: "admiral-team2-kv"          # the name of the KeyVault
     resourceGroup: "rg-aks-rbac"            # [REQUIRED for version < 0.0.4] the resource group of the KeyVault
