@@ -12,12 +12,15 @@ spec:
       array:
         - |
           objectName: sql-user2
+          objectAlias: SQL_USER
           objectType: secret        # object types: secret, key or cert. For Key Vault certificates, refer to https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/docs/getting-certs-and-keys.md for the object type to use
         - |
           objectName: sql-password2
+          objectAlias: SQL_PASSWORD
           objectType: secret
         - |
           objectName: sql-server2
+          objectAlias: SQL_SERVER
           objectType: secret
-    subscriptionId: "654efdd1-153d-49d5-8685-0f00758cc197"         # [REQUIRED for version < 0.0.4] the subscription ID of the KeyVault
+    subscriptionId: "654efdd1-153d-49d5-8685-0f00758cc197"           # [REQUIRED for version < 0.0.4] the subscription ID of the KeyVault
     tenantId: "6b29644a-06d8-48d2-80d8-360b0c87893c"                 # the tenant ID of the KeyVault
