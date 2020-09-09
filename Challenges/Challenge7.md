@@ -26,6 +26,8 @@ The updated Trip Viewer app expects an environment variable, WCF_ENDPOINT, in or
 
 ## Desired Architecture
 
+![Challenge 7 Architecture Diagram](images/challenge7-architecture.jfif "Challenge 7 - Architecture Diagram")
+
 ## Success Criteria
 
 * Your team successfully deployed the WCF application into the same AKS cluster as your Linux workloads

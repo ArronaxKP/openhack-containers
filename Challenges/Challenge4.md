@@ -25,6 +25,8 @@ In order to validate that your application is working as expected, you will need
 
 ## Desired Architecture
 
+![Challenge 4 Architecture Diagram](images/challenge4-architecture.jfif "Challenge 4 - Architecture Diagram")
+
 ## Success Criteria
 
 * Your team successfully deployed the TripInsights application into the cluster
