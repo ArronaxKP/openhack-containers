@@ -55,20 +55,20 @@ Finally, your team must leverage the service mesh to make your services more rob
 
 ### Service Meshes
 
-* [About Service Meshes]()
+* [About Service Meshes](https://docs.microsoft.com/en-us/azure/aks/servicemesh-about)
 
 ### Linkerd
 
-* [Linkerd - Getting Started]()
-* [Linkerd - Overview]()
-* [Install Linkerd in Azure Kubernetes Service (AKS)]()
+* [Linkerd - Getting Started](https://linkerd.io/2/getting-started/)
+* [Linkerd - Overview](https://docs.microsoft.com/en-us/azure/aks/servicemesh-linkerd-about)
+* [Install Linkerd in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/servicemesh-linkerd-install)
 
 ### Istio
 
-* [What is Istio?]()
-* [Istio - Overview]()
-* [Install and use Istio in Azure Kubernetes Service (AKS)]()
+* [What is Istio?](https://istio.io/docs/concepts/what-is-istio/)
+* [Istio - Overview](https://docs.microsoft.com/en-us/azure/aks/servicemesh-istio-about)
+* [Install and use Istio in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/servicemesh-istio-install)
 
 ### Distributed Systems
 
-* [The Four Golden Signals]()
+* [The Four Golden Signals](https://landing.google.com/sre/sre-book/chapters/monitoring-distributed-systems/)

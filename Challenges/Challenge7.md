@@ -35,8 +35,8 @@ The updated Trip Viewer app expects an environment variable, WCF_ENDPOINT, in or
 
 ## References
 
-* [Windows Containers in Kubernetes]()
-* [Multiple Node Pools in AKS]()
-* [Windows on AKS]()
-* [About Windows Containers]()
-* [Configuring Azure CNI with AKS]()
+* [Windows Containers in Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/)
+* [Multiple Node Pools in AKS](https://docs.microsoft.com/en-us/azure/aks/use-multiple-node-pools)
+* [Windows on AKS](https://docs.microsoft.com/en-us/azure/aks/windows-container-cli)
+* [About Windows Containers](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/)
+* [Configuring Azure CNI with AKS](https://docs.microsoft.com/en-us/azure/aks/configure-azure-cni)

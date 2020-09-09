@@ -25,18 +25,18 @@ Your CTO is feeling confident in what your team has been able to accomplish, but
 
 ### Kubernetes
 
-* [Kubernetes Service Accounts
+* [Kubernetes Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 
 ### AKS
 
-* [Using Pod Security Policies]()
-* [Using Network Policies]()
-* [Kubernetes Azure Key Vault FlexVolume]()
-* [Secure access to the API server using authorized IP address ranges in AKS]()
-* [Control egress traffic for cluster nodes in AKS]()
+* [Using Pod Security Policies](https://docs.microsoft.com/en-us/azure/aks/use-pod-security-policies)
+* [Using Network Policies](https://docs.microsoft.com/en-us/azure/aks/use-network-policies)
+* [Kubernetes Azure Key Vault FlexVolume](https://github.com/Azure/kubernetes-keyvault-flexvol)
+* [Secure access to the API server using authorized IP address ranges in AKS](https://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges)
+* [Control egress traffic for cluster nodes in AKS](https://docs.microsoft.com/en-us/azure/aks/limit-egress-traffic)
 
 ### Azure SQL Database
 
-* [Use virtual network service endpoints and rules]()for database servers]()
-* [Azure CLI: az network vnet subnet update]()
-* [Azure CLI: az sql server firewall-rule]()
+* [Use virtual network service endpoints and rules]()for database servers](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
+* [Azure CLI: az network vnet subnet update](https://docs.microsoft.com/en-us/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)
+* [Azure CLI: az sql server firewall-rule](https://docs.microsoft.com/en-us/cli/azure/sql/server/firewall-rule?view=azure-cli-latest)
