@@ -86,20 +86,20 @@ Of course, you didn't write this application, so it isn't up to your standards..
 
 ### Monitoring Microservices
 
-* [Overview of Monitoring for microservices]()
+* [Overview of Monitoring for microservices](https://docs.microsoft.com/en-us/azure/architecture/microservices/logging-monitoring)
 
 ### Azure
 
-* [Azure Container Insights reference]()
-* [Azure Container Insights Agent Config]()
-* [Search Logs to Analyze Data]()
-* [Kusto Query Language Reference]()
-* [Container Insights Alerts]()
+* [Azure Container Insights reference](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview)
+* [Azure Container Insights Agent Config](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-agent-config)
+* [Search Logs to Analyze Data](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-log-search#search-logs-to-analyze-data)
+* [Kusto Query Language Reference](https://docs.microsoft.com/en-us/azure/kusto)
+* [Container Insights Alerts](https://docs.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-alerts)
 
 ## Prometheus
 
-* [Prometheus]()
-* [Built-in Prometheus Metrics]()
-* [Prometheus Exporters]()
-* [Using Function Operators to Analyze Data from Prometheus]()
-* [Visualization with Prometheus]()
+* [Prometheus](https://prometheus.io/docs/introduction/overview/)
+* [Built-in Prometheus Metrics](https://github.com/helm/charts/tree/master/stable/nginx-ingress#prometheus-metrics)
+* [Prometheus Exporters](https://prometheus.io/docs/instrumenting/exporters/)
+* [Using Function Operators to Analyze Data from Prometheus](https://prometheus.io/docs/prometheus/latest/querying/examples/#using-functions-operators-etc)
+* [Visualization with Prometheus](https://prometheus.io/docs/visualization/grafana/)
