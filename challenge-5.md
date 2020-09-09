@@ -20,11 +20,12 @@ Using this guide page - https://docs.microsoft.com/en-us/azure/azure-monitor/ins
 
 Added the configmap approach to connect to Azure Monitor (abandoned and gone to below option)
 
-## Add prometheus opersator
+## Deploy Prometheus
 
-Ran this command
+Ran these commands to deploy the full prometheus deployment
 
 ```bash
+kubectl create namespace monitoring
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
 helm repo update
 helm install prometheus --namespace monitoring stable/prometheus-**operator**
