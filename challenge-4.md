@@ -144,7 +144,6 @@ kubectl apply -f deployment-user-java.yaml
 kubectl apply -f deployment-userprofile.yaml
 ```
 
-<<<<<<< HEAD
 ## Create Nginx Ingress Controller
 
 [As per instructions](https://docs.microsoft.com/en-us/azure/aks/ingress-basic)
