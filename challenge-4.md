@@ -160,3 +160,6 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
+
+Check ingress deployment is working:
+`kubectl --namespace ingress-basic get services -o wide nginx-ingress-ingress-nginx-controller`
