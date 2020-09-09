@@ -4,5 +4,5 @@ metadata:
   name: tripviewer-config-map
   namespace: tripviewer
 data:
-  TRIPS_API_ENDPOINT: "http://trips"
-  USERPROFILE_API_ENDPOINT: "http://userprofile"
+  TRIPS_API_ENDPOINT: "http://trips.tripapi"
+  USERPROFILE_API_ENDPOINT: "http://userprofile.tripapi"
